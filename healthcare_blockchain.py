@@ -44,18 +44,31 @@ class Blockchain:
 
 
 # --------------------
-# Demonstration
+# Demonstration with User Input
 # --------------------
-
-# Create blockchain for healthcare records
 health_chain = Blockchain()
 
-# Add some medical records
-health_chain.add_block({"PatientID": 101, "Name": "Alice", "Diagnosis": "Diabetes", "Prescription": "Metformin"})
-health_chain.add_block({"PatientID": 102, "Name": "Bob", "Diagnosis": "Hypertension", "Prescription": "Amlodipine"})
-health_chain.add_block({"PatientID": 103, "Name": "Charlie", "Diagnosis": "Asthma", "Prescription": "Inhaler"})
+print("=== Medical Record Blockchain System ===")
+num_records = int(input("Enter number of medical records to add: "))
 
-# Print the blockchain
+for i in range(num_records):
+    print(f"\nEnter details for Patient {i+1}:")
+    patient_id = input("Patient ID: ")
+    name = input("Name: ")
+    diagnosis = input("Diagnosis: ")
+    prescription = input("Prescription: ")
+
+    record = {
+        "PatientID": patient_id,
+        "Name": name,
+        "Diagnosis": diagnosis,
+        "Prescription": prescription
+    }
+
+    health_chain.add_block(record)
+
+# Display blockchain
+print("\n=== Blockchain Records ===")
 for block in health_chain.chain:
     print("\nIndex:", block.index)
     print("Timestamp:", block.timestamp)
